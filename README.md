@@ -46,10 +46,9 @@ File pdffile = new File(reportDir + "/employee.pdf");
 connectorInstance.generateReport(JasperExportType.PDF, "employee/emp.jrxml", new HashMap<>(), dataSourceProvider.getDataSource(), pdffile);
 System.out.println("PDF report generated successfully using data source");
 
-
-Apart from above api, Apart from above api there are multiple apis to generate jasper reports, visit JasperConnector java class in api module.
-
 ```
+
+Apart from above api, there are multiple apis exposed in this connector to generate jasper reports, visit JasperConnector java class in api module.
 
 
 
