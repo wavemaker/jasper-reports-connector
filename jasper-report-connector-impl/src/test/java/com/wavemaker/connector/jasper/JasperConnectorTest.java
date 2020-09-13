@@ -78,6 +78,15 @@ public class JasperConnectorTest {
     }
 
     @Test
+    public void generatePDFReportByDataSourceHavingPlacceholders() {
+        File pdffile = new File(reportDir + "/employee_ph.pdf");
+        HashMap<String, Object> objectObjectHashMap = new HashMap<>();
+        objectObjectHashMap.put("age",60);
+        connectorInstance.generateReport(JasperExportType.PDF, "employeeWithPlaceholders/emp.jrxml", objectObjectHashMap , dataSourceProvider.getDataSource(), pdffile);
+        System.out.println("PDF report generated successfully using data source");
+    }
+
+    @Test
     public void generateXLSReportByDataSource() {
         File reportFile = new File(reportDir + "/employee.xls");
         connectorInstance.generateReport(JasperExportType.XLS, "employee/emp.jrxml", new HashMap<>(), dataSourceProvider.getDataSource(), reportFile);
@@ -87,6 +96,11 @@ public class JasperConnectorTest {
     @Test
     public void generateCSVReportByDataSource() {
         File reportFile = new File(reportDir + "/employee.csv");
+        try {
+            File.createTempFile("tmp", ".txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         connectorInstance.generateReport(JasperExportType.CSV, "employee/emp.jrxml", new HashMap<>(), dataSourceProvider.getDataSource(), reportFile);
         System.out.println("CSV report generated successfully using connector data source");
     }
@@ -117,6 +131,7 @@ public class JasperConnectorTest {
             e.printStackTrace();
         }
     }
+
 
     private String getStringFromResource(String resource) {
         try {
