@@ -48,7 +48,7 @@ import com.wavemaker.runtime.data.datasource.WMDataSource;
     private JasperConnector jasperConnector;
 
     @Autowired
-    @Qualifier(${dataSourceName})
+    @Qualifier("${r"${dataSourceName}"}")
     private WMDataSource dataSource;
 
 	//Generating PDF report from the data source.
