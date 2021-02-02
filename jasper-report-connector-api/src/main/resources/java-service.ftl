@@ -5,6 +5,7 @@
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -55,7 +56,9 @@ import com.wavemaker.runtime.data.datasource.WMDataSource;
     public Downloadable generatePDFReportFromDataSource(String jrxmlFilePath, String outputFileName) {
          logger.info("Calling connector to generate the jasperReport");
          //Report can be generated to any HTML, PDF, XLS, CSV, DOC file type.
-         ByteArrayOutputStream pdfReportStream = (ByteArrayOutputStream) jasperConnector.generateReport(JasperExportType.PDF, jrxmlFilePath, new HashMap<>(), dataSource);
+	 Map<String, Object> parametersMap = new HashMap<>();
+	 
+         ByteArrayOutputStream pdfReportStream = (ByteArrayOutputStream) jasperConnector.generateReport(JasperExportType.PDF, jrxmlFilePath, parametersMap, dataSource);
 
          DownloadResponse downloadableResponse = new DownloadResponse(new ByteArrayInputStream(pdfReportStream.toByteArray()), "application/pdf", outputFileName);
          downloadableResponse.setInline(false);
@@ -69,7 +72,9 @@ import com.wavemaker.runtime.data.datasource.WMDataSource;
 
          logger.info("Calling connector to generate the jasperReport");
          //Report can be generated to any HTML, PDF, XLS, CSV, DOC file type.
-         ByteArrayOutputStream pdfReportStream = (ByteArrayOutputStream) jasperConnector.generateReport(JasperExportType.PDF, jrxmlFilePath, new HashMap<>(), data);
+	 Map<String, Object> parametersMap = new HashMap<>();
+	 
+         ByteArrayOutputStream pdfReportStream = (ByteArrayOutputStream) jasperConnector.generateReport(JasperExportType.PDF, jrxmlFilePath, parametersMap, data);
 
          DownloadResponse downloadableResponse = new DownloadResponse(new ByteArrayInputStream(pdfReportStream.toByteArray()), "application/pdf", outputFileName);
          downloadableResponse.setInline(false);
