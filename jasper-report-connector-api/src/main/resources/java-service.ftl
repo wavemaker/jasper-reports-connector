@@ -4,8 +4,7 @@
  package ${packageName};
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
