@@ -23,7 +23,7 @@ import com.wavemaker.runtime.file.model.Downloadable;
 
 import com.wavemaker.connector.jasper.JasperConnector;
 import com.wavemaker.connector.jasper.JasperExportType;
-import com.wavemaker.runtime.data.datasource.WMDataSource;
+import javax.sql.DataSource;
 
  //import ${packageName}.model.*;
 
@@ -44,12 +44,12 @@ import com.wavemaker.runtime.data.datasource.WMDataSource;
 
     private static final Logger logger = LoggerFactory.getLogger(${className}.class);
 
-	@Autowired
+    @Autowired
     private JasperConnector jasperConnector;
 
     @Autowired
-    @Qualifier("${r"${dataSourceName}"}")
-    private WMDataSource dataSource;
+    @Qualifier("${r"${jasper.datasource}"}")
+    private DataSource dataSource;
 
 	//Generating PDF report from the data source.
     public Downloadable generatePDFReportFromDataSource(String jrxmlFilePath, String outputFileName) {
