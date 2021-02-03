@@ -48,7 +48,7 @@ import javax.sql.DataSource;
     private JasperConnector jasperConnector;
 
     @Autowired
-    @Qualifier("${r"${jasper.datasource}"}")
+    @Qualifier("${r"${dataSourceName}"}")
     private DataSource dataSource;
 
 	//Generating PDF report from the data source.
